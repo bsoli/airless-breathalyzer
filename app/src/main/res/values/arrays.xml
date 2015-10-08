@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="Racelist">
+        <item>@string/Race1</item>
+        <item>@string/Race2</item>
+        <item>@string/Race3</item>
+        <item>@string/Race4</item>
+        <item>@string/Race5</item>
+        <item>@string/Race6</item>
+    </string-array>
+    <string-array name="Sexlist">
+        <item>@string/Sex1</item>
+        <item>@string/Sex2</item>
+        <item>@string/Sex3</item>
+    </string-array>
+</resources>
