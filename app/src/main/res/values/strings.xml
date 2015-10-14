@@ -1,18 +1,21 @@
 <resources>
     <string name="app_name">Airless Breathalyzer</string>
     <string name="title_activity_profiles">Profiles</string>
-    <string name="feedbacktitle">Profiles, all the Profiles</string>
-    <string name="feedbackname">Make a Profile</string>
+    <string name="feedbacktitle">Make a new Profile</string>
     <string name="racetype">Select a Race</string>
+    <string name="Race0">Please Select a Race</string>
     <string name="Race1">White</string>
     <string name="Race2">Black</string>
     <string name="Race3">Asian</string>
     <string name="Race4">Hispanic</string>
     <string name="Race5">Middle Eastern</string>
     <string name="Race6">Other</string>
-    <string name="sextype">Select a Race</string>
+    <string name="sextype">Select a Sex</string>
+    <string name="Sex0">Please Select a Sex</string>
     <string name="Sex1">Male</string>
     <string name="Sex2">Female</string>
     <string name="Sex3">Prefer not to Respond</string>
-    <string name="title_activity_pick_profile">pick_profile</string>
+    <string name="title_activity_pick_profile">Pick a Profile</string>
+    <string name="filename">profiles.txt</string>
+    <string name="title_activity_main">MainActivity</string>
 </resources>

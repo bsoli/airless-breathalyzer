@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="Racelist">
+        <item>@string/Race0</item>
         <item>@string/Race1</item>
         <item>@string/Race2</item>
         <item>@string/Race3</item>
@@ -9,6 +10,7 @@
         <item>@string/Race6</item>
     </string-array>
     <string-array name="Sexlist">
+        <item>@string/Sex0</item>
         <item>@string/Sex1</item>
         <item>@string/Sex2</item>
         <item>@string/Sex3</item>
