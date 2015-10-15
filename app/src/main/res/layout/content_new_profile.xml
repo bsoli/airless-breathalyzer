@@ -25,19 +25,12 @@
                 android:text="@string/feedbacktitle"
                 android:textSize="10pt">
             </TextView>
-            <EditText
-                android:id="@+id/EditTextName"
-                android:layout_height="wrap_content"
-                android:hint="@string/feedbackname"
-                android:inputType="textPersonName"
-                android:layout_width="fill_parent">
-            </EditText>
 
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPersonName"
-                android:text="Name"
+                android:hint="Name"
                 android:ems="10"
                 android:id="@+id/name" />
 
@@ -45,7 +38,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="number"
-                android:text="Age"
+                android:hint="Age"
                 android:ems="10"
                 android:id="@+id/age" />
 
@@ -53,16 +46,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="number"
-                android:text="Weight"
+                android:hint="Weight"
                 android:ems="10"
                 android:id="@+id/weight" />
-
 
             <Spinner
                 android:id="@+id/RaceType"
                 android:layout_height="wrap_content"
                 android:prompt="@string/racetype"
-                android:layout_width="fill_parent"
+                android:layout_width="wrap_content"
                 android:entries="@array/Racelist">
             </Spinner>
 
@@ -70,7 +62,7 @@
                 android:id="@+id/SexType"
                 android:layout_height="wrap_content"
                 android:prompt="@string/sextype"
-                android:layout_width="fill_parent"
+                android:layout_width="wrap_content"
                 android:entries="@array/Sexlist">
             </Spinner>
 
