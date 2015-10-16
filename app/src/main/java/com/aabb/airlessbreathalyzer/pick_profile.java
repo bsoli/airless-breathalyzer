@@ -2,6 +2,7 @@ package com.aabb.airlessbreathalyzer;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -52,7 +53,12 @@ public class pick_profile extends AppCompatActivity {
         start.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //here we should probs create a profile object so that it is easier to use
+                String name = ((Spinner)findViewById(R.id.spinner)).getSelectedItem().toString();
+                try {
+                    Profile selectedProfile = new Profile(getProfileData(name));
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
                 Intent myIntent = new Intent(getBaseContext(), null); //this will lead to the command manager. will also need to send the profile 'Object'
                 startActivity(myIntent);
             }
@@ -90,6 +96,20 @@ public class pick_profile extends AppCompatActivity {
             names.add(line[0]);
         }
         return names;
+    }
+
+    private String getProfileData(String name) throws Exception {
+        FileInputStream in = openFileInput(getString(R.string.filename));
+        InputStreamReader stream = new InputStreamReader(in);
+        BufferedReader read = new BufferedReader(stream);
+
+        String next;
+        while ((next = read.readLine()) != null) {
+            if (name.equals(next.split("`")[0])) {
+                return next;
+            }
+        }
+        return "";
     }
 
 
