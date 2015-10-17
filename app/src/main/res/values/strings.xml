@@ -18,4 +18,5 @@
     <string name="title_activity_pick_profile">Pick a Profile</string>
     <string name="filename">profiles.txt</string>
     <string name="title_activity_main">MainActivity</string>
+    <string name="title_activity_math_test">mathTest</string>
 </resources>
