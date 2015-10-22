@@ -37,7 +37,7 @@ public class new_profile extends AppCompatActivity {
                     osw.close();
                     fos.close();
                 } catch (Exception e) {
-                    Snackbar.make(view, "Profile Not Created! The Devs suck! Did you fuck with your local storage?", Snackbar.LENGTH_LONG)
+                    Snackbar.make(view, "Profile Not Created", Snackbar.LENGTH_LONG)
                             .setAction("Action", null).show();
                     e.printStackTrace();
                 }

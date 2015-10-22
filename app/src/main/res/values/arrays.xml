@@ -9,10 +9,34 @@
         <item>@string/Race5</item>
         <item>@string/Race6</item>
     </string-array>
+
     <string-array name="Sexlist">
         <item>@string/Sex0</item>
         <item>@string/Sex1</item>
         <item>@string/Sex2</item>
         <item>@string/Sex3</item>
+    </string-array>
+
+    <string-array name="Wordlist">
+        <item>@string/Word1</item>
+        <item>@string/Word2</item>
+        <item>@string/Word3</item>
+        <item>@string/Word4</item>
+        <item>@string/Word5</item>
+        <item>@string/Word6</item>
+        <item>@string/Word7</item>
+        <item>@string/Word8</item>
+        <item>@string/Word9</item>
+        <item>@string/Word10</item>
+        <item>@string/Word11</item>
+        <item>@string/Word12</item>
+        <item>@string/Word13</item>
+        <item>@string/Word14</item>
+        <item>@string/Word15</item>
+        <item>@string/Word16</item>
+        <item>@string/Word17</item>
+        <item>@string/Word18</item>
+        <item>@string/Word19</item>
+        <item>@string/Word20</item>
     </string-array>
 </resources>

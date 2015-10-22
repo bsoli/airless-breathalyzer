@@ -101,8 +101,8 @@ public class mathTest extends AppCompatActivity {
 
     private String[] generateQuestionAndAnswers() {
         Random r = new Random();
-        int num1 = r.nextInt(15) + 1;
-        int num2 = r.nextInt(15) + 1;
+        int num1 = r.nextInt(15) + 2;
+        int num2 = r.nextInt(15) + 2;
         int ans;
         String question;
         if (num1 % num2 == 0 && num1 != num2) {
@@ -117,6 +117,7 @@ public class mathTest extends AppCompatActivity {
             ans = num2 * num1;
             question = num1 + " X " + num2;
         }
+
         int mod1, mod2;
         while (true) {
             int attempt = r.nextInt(4) - 2;
