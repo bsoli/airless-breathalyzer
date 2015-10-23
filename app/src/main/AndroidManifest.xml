@@ -28,6 +28,26 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".mathTest"
+            android:label="@string/title_activity_math_test"
+            android:theme="@style/AppTheme.NoActionBar" >
+        </activity>
+        <activity
+            android:name=".reflexTest"
+            android:label="@string/title_activity_reflex_test"
+            android:theme="@style/AppTheme.NoActionBar" >
+        </activity>
+        <activity
+            android:name=".shortTermMemoryTestStart"
+            android:label="@string/title_activity_short_term_memory_test_start"
+            android:theme="@style/AppTheme.NoActionBar" >
+        </activity>
+        <activity
+            android:name=".shortTermMemoryTestFinish"
+            android:label="@string/title_activity_short_term_memory_test_finish"
+            android:theme="@style/AppTheme.NoActionBar" >
+        </activity>
     </application>
 
 </manifest>
