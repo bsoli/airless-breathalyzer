@@ -21,6 +21,8 @@ public class shortTermMemoryTestStart extends AppCompatActivity {
 
     private long startTime;
 
+    private Profile profile;
+
     private Handler timerHandler = new Handler();
     private Runnable timerRunnable = new Runnable() {
 
@@ -38,7 +40,7 @@ public class shortTermMemoryTestStart extends AppCompatActivity {
             timerHandler.postDelayed(this, 3);
 
             if(seconds == 5) {
-                //startTest();
+                startTest();
             }
 
         }
@@ -49,8 +51,9 @@ public class shortTermMemoryTestStart extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_short_term_memory_test_start);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+
+        Bundle bundle = this.getIntent().getExtras();
+        profile = bundle.getParcelable(getString(R.string.profile));
 
         t1 = (TextView) findViewById(R.id.textView);
         t2 = (TextView) findViewById(R.id.textView2);
@@ -87,8 +90,11 @@ public class shortTermMemoryTestStart extends AppCompatActivity {
         t5.setText(memory[4]);
     }
 
- //   public void startTest() {
- //       Intent myIntent = new Intent(getBaseContext(), short_term_memory_test_finish.class);
- //       startActivity(myIntent);
- //   }
+    public void startTest() {
+        Intent myIntent = new Intent(getBaseContext(), reflexTest.class);
+        Bundle bundle = new Bundle();
+        bundle.putParcelable(getString(R.string.profile), profile);
+        myIntent.putExtras(bundle);
+        startActivity(myIntent);
+    }
 }

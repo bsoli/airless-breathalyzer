@@ -1,6 +1,7 @@
 package com.aabb.airlessbreathalyzer;
 
 
+import android.content.Intent;
 import android.graphics.Point;
 import android.os.Bundle;
 import android.os.Handler;
@@ -30,6 +31,9 @@ public class reflexTest extends AppCompatActivity {
     private String tag = "Reflex";
     private Button button;
 
+    private Profile profile;
+
+
 
     //runs without a timer by reposting this handler at the end of the runnable
     private Handler timerHandler = new Handler();
@@ -57,6 +61,9 @@ public class reflexTest extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reflex_test);
+
+        Bundle bundle = this.getIntent().getExtras();
+        profile = bundle.getParcelable(getString(R.string.profile));
 
         button = (Button) findViewById(R.id.button);
         timer = (TextView) findViewById(R.id.timer);
@@ -95,6 +102,11 @@ public class reflexTest extends AppCompatActivity {
         } else {
             //TODO Move to next test
             timerHandler.removeCallbacks(timerRunnable);
+            Intent myIntent = new Intent(getBaseContext(), mathTest.class);
+            Bundle bundle = new Bundle();
+            bundle.putParcelable(getString(R.string.profile), profile);
+            myIntent.putExtras(bundle);
+            startActivity(myIntent);
         }
     }
 
@@ -109,25 +121,3 @@ public class reflexTest extends AppCompatActivity {
         button.setY(newY);
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

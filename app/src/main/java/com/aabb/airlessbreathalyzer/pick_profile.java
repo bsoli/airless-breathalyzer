@@ -3,6 +3,7 @@ package com.aabb.airlessbreathalyzer;
 import android.content.Intent;
 import android.os.Bundle;
 import android.provider.ContactsContract;
+import android.provider.SyncStateContract;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -54,12 +55,16 @@ public class pick_profile extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String name = ((Spinner)findViewById(R.id.spinner)).getSelectedItem().toString();
+                Profile selectedProfile = null;
                 try {
-                    Profile selectedProfile = new Profile(getProfileData(name));
+                    selectedProfile = new Profile(getProfileData(name));
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-                Intent myIntent = new Intent(getBaseContext(), null); //this will lead to the command manager. will also need to send the profile 'Object'
+                Intent myIntent = new Intent(getBaseContext(), shortTermMemoryTestStart.class);
+                Bundle bundle = new Bundle();
+                bundle.putParcelable(getString(R.string.profile), selectedProfile);
+                myIntent.putExtras(bundle);
                 startActivity(myIntent);
             }
         });

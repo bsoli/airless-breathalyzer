@@ -14,10 +14,15 @@ import java.util.Random;
 
 public class mathTest extends AppCompatActivity {
 
+    private Profile profile;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_math_test);
+
+        Bundle bundle = this.getIntent().getExtras();
+        profile = bundle.getParcelable(getString(R.string.profile));
 
         final String[] questionAndAnswers = generateQuestionAndAnswers();
 
@@ -44,9 +49,11 @@ public class mathTest extends AppCompatActivity {
                     Snackbar.make(view, "LOL, WRONG!", Snackbar.LENGTH_LONG)
                             .setAction("Action", null).show();
                 }
-                Intent myIntent = new Intent(getBaseContext(), null); //this will lead to the command manager
+                Intent myIntent = new Intent(getBaseContext(), shortTermMemoryTestFinish.class);
+                Bundle bundle = new Bundle();
+                bundle.putParcelable(getString(R.string.profile), profile);
+                myIntent.putExtras(bundle);
                 startActivity(myIntent);
-
             }
         });
 
@@ -62,7 +69,10 @@ public class mathTest extends AppCompatActivity {
                     Snackbar.make(view, "LOL, WRONG!", Snackbar.LENGTH_LONG)
                             .setAction("Action", null).show();
                 }
-                Intent myIntent = new Intent(getBaseContext(), null); //this will lead to the command manager
+                Intent myIntent = new Intent(getBaseContext(), shortTermMemoryTestFinish.class);
+                Bundle bundle = new Bundle();
+                bundle.putParcelable(getString(R.string.profile), profile);
+                myIntent.putExtras(bundle);
                 startActivity(myIntent);
             }
         });
@@ -79,7 +89,10 @@ public class mathTest extends AppCompatActivity {
                     Snackbar.make(view, "LOL, WRONG!", Snackbar.LENGTH_LONG)
                             .setAction("Action", null).show();
                 }
-                Intent myIntent = new Intent(getBaseContext(), null); //this will lead to the command manager
+                Intent myIntent = new Intent(getBaseContext(), shortTermMemoryTestFinish.class);
+                Bundle bundle = new Bundle();
+                bundle.putParcelable(getString(R.string.profile), profile);
+                myIntent.putExtras(bundle);
                 startActivity(myIntent);
             }
         });

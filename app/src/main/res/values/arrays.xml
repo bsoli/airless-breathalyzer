@@ -39,4 +39,8 @@
         <item>@string/Word19</item>
         <item>@string/Word20</item>
     </string-array>
+
+    <string-array name="testList">
+        <item></item>
+    </string-array>
 </resources>

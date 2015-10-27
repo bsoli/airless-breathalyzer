@@ -48,6 +48,8 @@
             android:label="@string/title_activity_short_term_memory_test_finish"
             android:theme="@style/AppTheme.NoActionBar" >
         </activity>
+        <activity android:name=".analyzeData" >
+        </activity>
     </application>
 
 </manifest>
