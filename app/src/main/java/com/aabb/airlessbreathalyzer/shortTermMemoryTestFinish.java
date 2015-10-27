@@ -22,7 +22,7 @@ public class shortTermMemoryTestFinish extends AppCompatActivity {
         profile = bundle.getParcelable(getString(R.string.profile));
 
         //start new activity and send the profile
-        Intent myIntent = new Intent(getBaseContext(), shortTermMemoryTestFinish.class);
+        Intent myIntent = new Intent(getBaseContext(), analyzeData.class);
         Bundle newBundle = new Bundle();
         bundle.putParcelable(getString(R.string.profile), profile);
         myIntent.putExtras(bundle);
