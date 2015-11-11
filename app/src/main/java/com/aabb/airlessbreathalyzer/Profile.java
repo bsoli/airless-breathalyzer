@@ -3,7 +3,6 @@ package com.aabb.airlessbreathalyzer;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import java.util.ArrayList;
 
 /**
  * Created by oscar on 10/14/15.
@@ -17,7 +16,7 @@ public class Profile implements Parcelable {
     public String sex;
     public int memScore;
     public int reflexScore;
-    public int mathScore;
+    public double mathScore;
 
 
     public Profile(String profile) {
@@ -37,7 +36,7 @@ public class Profile implements Parcelable {
         sex = in.readString();
         memScore = in.readInt();
         reflexScore = in.readInt();
-        mathScore = in.readInt();
+        mathScore = in.readDouble();
     }
 
     public static final Creator<Profile> CREATOR = new Creator<Profile>() {
@@ -66,7 +65,7 @@ public class Profile implements Parcelable {
         dest.writeString(sex);
         dest.writeInt(memScore);
         dest.writeInt(reflexScore);
-        dest.writeInt(mathScore);
+        dest.writeDouble(mathScore);
 
     }
 }

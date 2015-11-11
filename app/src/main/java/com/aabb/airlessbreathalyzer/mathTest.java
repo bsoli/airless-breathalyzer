@@ -2,6 +2,7 @@ package com.aabb.airlessbreathalyzer;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -15,6 +16,9 @@ import java.util.Random;
 public class mathTest extends AppCompatActivity {
 
     private Profile profile;
+    private long startTime = System.currentTimeMillis();
+    private int times = 0;
+    private int questions = 4;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,61 +45,42 @@ public class mathTest extends AppCompatActivity {
         answer1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (questionAndAnswers[1].equals(randomizedQuestions[0])) {
-                    Snackbar.make(view, "Correct!", Snackbar.LENGTH_LONG)
-                            .setAction("Action", null).show();
-
-                } else {
-                    Snackbar.make(view, "LOL, WRONG!", Snackbar.LENGTH_LONG)
-                            .setAction("Action", null).show();
-                }
-                Intent myIntent = new Intent(getBaseContext(), shortTermMemoryTestFinish.class);
-                Bundle bundle = new Bundle();
-                bundle.putParcelable(getString(R.string.profile), profile);
-                myIntent.putExtras(bundle);
-                startActivity(myIntent);
+                wasClicked(questionAndAnswers[1], randomizedQuestions[0]);
             }
         });
 
         answer2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (questionAndAnswers[1].equals(randomizedQuestions[1])) {
-                    Snackbar.make(view, "Correct!", Snackbar.LENGTH_LONG)
-                            .setAction("Action", null).show();
-
-                }
-                else {
-                    Snackbar.make(view, "LOL, WRONG!", Snackbar.LENGTH_LONG)
-                            .setAction("Action", null).show();
-                }
-                Intent myIntent = new Intent(getBaseContext(), shortTermMemoryTestFinish.class);
-                Bundle bundle = new Bundle();
-                bundle.putParcelable(getString(R.string.profile), profile);
-                myIntent.putExtras(bundle);
-                startActivity(myIntent);
+                wasClicked(questionAndAnswers[1], randomizedQuestions[1]);
             }
         });
 
         answer3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (questionAndAnswers[1].equals(randomizedQuestions[1])) {
-                Snackbar.make(view, "Correct!", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-
-                }
-                else {
-                    Snackbar.make(view, "LOL, WRONG!", Snackbar.LENGTH_LONG)
-                            .setAction("Action", null).show();
-                }
-                Intent myIntent = new Intent(getBaseContext(), shortTermMemoryTestFinish.class);
-                Bundle bundle = new Bundle();
-                bundle.putParcelable(getString(R.string.profile), profile);
-                myIntent.putExtras(bundle);
-                startActivity(myIntent);
+                wasClicked(questionAndAnswers[1], randomizedQuestions[2]);
             }
         });
+    }
+
+    private void wasClicked(String correctAnswer, String attemptedAnswer) {
+        if (correctAnswer.equals(attemptedAnswer)) {
+            questions--;
+        }
+        if (times < 3) {
+
+        }
+        else {
+            long endTime = System.currentTimeMillis();
+            double score = ((startTime-endTime)/3) * questions;
+            profile.mathScore = score;
+            Intent myIntent = new Intent(getBaseContext(), shortTermMemoryTestFinish.class);
+            Bundle bundle = new Bundle();
+            bundle.putParcelable(getString(R.string.profile), profile);
+            myIntent.putExtras(bundle);
+            startActivity(myIntent);
+        }
     }
 
     private String[] randomizeQuestions(String[] questions) {
