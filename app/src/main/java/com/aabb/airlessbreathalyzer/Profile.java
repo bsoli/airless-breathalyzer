@@ -14,8 +14,8 @@ public class Profile implements Parcelable {
     public int weight;
     public String race;
     public String sex;
-    public int memScore;
-    public int reflexScore;
+    public double memScore;
+    public double reflexScore;
     public double mathScore;
 
 
@@ -34,8 +34,8 @@ public class Profile implements Parcelable {
         weight = in.readInt();
         race = in.readString();
         sex = in.readString();
-        memScore = in.readInt();
-        reflexScore = in.readInt();
+        memScore = in.readDouble();
+        reflexScore = in.readDouble();
         mathScore = in.readDouble();
     }
 
@@ -63,8 +63,8 @@ public class Profile implements Parcelable {
         dest.writeInt(weight);
         dest.writeString(race);
         dest.writeString(sex);
-        dest.writeInt(memScore);
-        dest.writeInt(reflexScore);
+        dest.writeDouble(memScore);
+        dest.writeDouble(reflexScore);
         dest.writeDouble(mathScore);
 
     }
