@@ -109,12 +109,15 @@ public class pick_profile extends AppCompatActivity {
         BufferedReader read = new BufferedReader(stream);
 
         String next;
+        String found = "";
         while ((next = read.readLine()) != null) {
-            if (name.equals(next.split("`")[0])) {
-                return next;
+            String thisName = next.split("`")[0];
+            boolean b = name.equals(thisName);
+            if (b) {
+                found = next;
             }
         }
-        return "";
+        return found;
     }
 
 

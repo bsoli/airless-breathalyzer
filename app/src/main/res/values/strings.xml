@@ -43,6 +43,11 @@
     <string name="Word18">kitchen</string>
     <string name="Word19">sandwich</string>
     <string name="Word20">pencil</string>
+    <string name="word1prompt">First Word</string>
+    <string name="word2prompt">Second Word</string>
+    <string name="word3prompt">Third Word</string>
+    <string name="word4prompt">Fourth Word</string>
+    <string name="word5prompt">Fifth Word</string>
     <string name="title_activity_short_term_memory_test_finish">short_term_memory_test_finish</string>
     <string name="profile">profile</string>
 </resources>

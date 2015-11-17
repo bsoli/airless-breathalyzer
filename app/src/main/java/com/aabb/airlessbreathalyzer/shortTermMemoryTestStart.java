@@ -54,6 +54,7 @@ public class shortTermMemoryTestStart extends AppCompatActivity {
 
         Bundle bundle = this.getIntent().getExtras();
         profile = bundle.getParcelable(getString(R.string.profile));
+        System.out.println("*************************************"+profile);
 
         t1 = (TextView) findViewById(R.id.textView);
         t2 = (TextView) findViewById(R.id.textView2);
@@ -83,6 +84,11 @@ public class shortTermMemoryTestStart extends AppCompatActivity {
                 i++;
             }
         }
+        profile.word1 = memory[0];
+        profile.word2 = memory[1];
+        profile.word3 = memory[2];
+        profile.word4 = memory[3];
+        profile.word5 = memory[4];
         t1.setText(memory[0]);
         t2.setText(memory[1]);
         t3.setText(memory[2]);

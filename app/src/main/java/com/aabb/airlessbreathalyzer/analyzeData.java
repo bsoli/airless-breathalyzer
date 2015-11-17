@@ -50,13 +50,13 @@ public class analyzeData extends AppCompatActivity {
         age.setText(profile.age);
 
         TextView ref = (TextView) findViewById(R.id.reflex);
-        ref.setText(profile.reflexScore);
+        ref.setText(String.valueOf(profile.reflexScore));
 
         TextView math = (TextView) findViewById(R.id.math);
         math.setText(String.valueOf(profile.mathScore));
 
         TextView mem = (TextView) findViewById(R.id.mem);
-        mem.setText(profile.memScore);
+        mem.setText(String.valueOf(profile.memScore));
 
     }
 

@@ -27,7 +27,11 @@ public class mathTest extends AppCompatActivity {
 
         Bundle bundle = this.getIntent().getExtras();
         profile = bundle.getParcelable(getString(R.string.profile));
+        doMath(savedInstanceState);
 
+    }
+
+    private void doMath(final Bundle savedInstanceState) {
         final String[] questionAndAnswers = generateQuestionAndAnswers();
 
         TextView question = (TextView) findViewById(R.id.question);
@@ -45,31 +49,31 @@ public class mathTest extends AppCompatActivity {
         answer1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                wasClicked(questionAndAnswers[1], randomizedQuestions[0]);
+                wasClicked(questionAndAnswers[1], randomizedQuestions[0], savedInstanceState);
             }
         });
 
         answer2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                wasClicked(questionAndAnswers[1], randomizedQuestions[1]);
+                wasClicked(questionAndAnswers[1], randomizedQuestions[1], savedInstanceState);
             }
         });
 
         answer3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                wasClicked(questionAndAnswers[1], randomizedQuestions[2]);
+                wasClicked(questionAndAnswers[1], randomizedQuestions[2], savedInstanceState);
             }
         });
     }
 
-    private void wasClicked(String correctAnswer, String attemptedAnswer) {
+    private void wasClicked(String correctAnswer, String attemptedAnswer, Bundle savedInstanceState) {
         if (correctAnswer.equals(attemptedAnswer)) {
             questions--;
         }
         if (times < 3) {
-
+            times++;
         }
         else {
             long endTime = System.currentTimeMillis();
@@ -81,6 +85,7 @@ public class mathTest extends AppCompatActivity {
             myIntent.putExtras(bundle);
             startActivity(myIntent);
         }
+        this.onCreate(savedInstanceState);
     }
 
     private String[] randomizeQuestions(String[] questions) {

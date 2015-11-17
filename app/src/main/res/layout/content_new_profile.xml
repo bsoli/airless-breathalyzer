@@ -66,8 +66,6 @@
                 android:entries="@array/Sexlist">
             </Spinner>
 
-            <!--Put form controls here-->
-
         </LinearLayout>
     </ScrollView>
 
