@@ -14,15 +14,8 @@ public class analyzeData extends AppCompatActivity {
     private double memWeight = .1;
     private double maleMultiplier = 1;
     private double femaleMultiplier = .8;
-    private double weightModifier = .01;
+    private double weightModifier = .008;
     private double ageModifier = .01;
-    private double whiteMultiplier = 1;
-    private double blackMultiplier = 1;
-    private double asianMultiplier = 1;
-    private double hispanicMultiplier = 1;
-    private double middleEasternMultiplier = 1;
-    private double otherMultiplier = 1;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

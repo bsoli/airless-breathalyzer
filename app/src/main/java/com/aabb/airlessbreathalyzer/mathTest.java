@@ -97,7 +97,7 @@ public class mathTest extends AppCompatActivity {
         }
         else {
             long endTime = System.currentTimeMillis();
-            double score = (((endTime-startTime)/1000)/3) * questions;
+            double score = (((endTime-startTime)/1000.0)/3.0) * questions;
             profile.mathScore = score;
             Intent myIntent = new Intent(getBaseContext(), shortTermMemoryTestFinish.class);
             Bundle bundle = new Bundle();

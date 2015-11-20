@@ -102,7 +102,7 @@ public class reflexTest extends AppCompatActivity {
         } else {
             //TODO Move to next test
             timerHandler.removeCallbacks(timerRunnable);
-            double score = ((totalTime-totalDelay)/1000)/numRuns;
+            double score = ((totalTime)/1000)/numRuns;
             profile.reflexScore = score;
             Intent myIntent = new Intent(getBaseContext(), mathTest.class);
             Bundle bundle = new Bundle();
