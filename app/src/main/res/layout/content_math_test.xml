@@ -16,8 +16,11 @@
         android:text="New Button"
         android:id="@+id/answer1"
         android:layout_above="@+id/answer3"
-        android:layout_alignLeft="@+id/answer3"
-        android:layout_alignStart="@+id/answer3" />
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="48dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"  />
 
     <Button
         style="?android:attr/buttonStyleSmall"
@@ -26,8 +29,10 @@
         android:text="New Button"
         android:id="@+id/answer2"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="55dp" />
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
     <Button
         style="?android:attr/buttonStyleSmall"
@@ -36,8 +41,11 @@
         android:text="New Button"
         android:id="@+id/answer3"
         android:layout_above="@+id/answer2"
-        android:layout_alignLeft="@+id/answer2"
-        android:layout_alignStart="@+id/answer2" />
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="35dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
     <TextView
         android:layout_width="wrap_content"

@@ -12,7 +12,6 @@ public class Profile implements Parcelable {
     public String name;
     public int age;
     public int weight;
-    public String race;
     public String sex;
     public String word1;
     public String word2;
@@ -29,15 +28,13 @@ public class Profile implements Parcelable {
         this.name = data[0];
         this.age = Integer.parseInt(data[1]);
         this.weight = Integer.parseInt(data[2]);
-        this.race = data[3];
-        this.sex = data[4];
+        this.sex = data[3];
     }
 
     protected Profile(Parcel in) {
         name = in.readString();
         age = in.readInt();
         weight = in.readInt();
-        race = in.readString();
         sex = in.readString();
         word1 = in.readString();
         word2 = in.readString();
@@ -71,7 +68,6 @@ public class Profile implements Parcelable {
         dest.writeString(name);
         dest.writeInt(age);
         dest.writeInt(weight);
-        dest.writeString(race);
         dest.writeString(sex);
         dest.writeString(word1);
         dest.writeString(word2);

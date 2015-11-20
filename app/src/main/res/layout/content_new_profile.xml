@@ -48,15 +48,7 @@
                 android:inputType="number"
                 android:hint="Weight"
                 android:ems="10"
-                android:id="@+id/weight" />
-
-            <Spinner
-                android:id="@+id/RaceType"
-                android:layout_height="wrap_content"
-                android:prompt="@string/racetype"
-                android:layout_width="wrap_content"
-                android:entries="@array/Racelist">
-            </Spinner>
+                android:id="@+id/myweight" />
 
             <Spinner
                 android:id="@+id/SexType"

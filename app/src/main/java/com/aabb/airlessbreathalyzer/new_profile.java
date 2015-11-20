@@ -52,11 +52,10 @@ public class new_profile extends AppCompatActivity {
     private String getProfileData() {
         String name =((EditText) findViewById(R.id.name)).getText().toString();
         String age = ((EditText) findViewById(R.id.age)).getText().toString();
-        String weight = ((EditText) findViewById(R.id.weight)).getText().toString();
-        String race = ((Spinner) findViewById(R.id.RaceType)).getSelectedItem().toString();
+        String weight = ((EditText) findViewById(R.id.myweight)).getText().toString();
         String sex = ((Spinner) findViewById(R.id.SexType)).getSelectedItem().toString();
 
-        return name + "`" + age + "`" + weight + "`" + race + "`" + sex + "\n";
+        return name + "`" + age + "`" + weight + "`" + "`" + sex + "\n";
 
     }
 }

@@ -9,11 +9,11 @@ import android.widget.TextView;
 public class analyzeData extends AppCompatActivity {
 
     private Profile profile;
-    private double reflexWeight = 1;
-    private double mathWeight = 1;
-    private double memWeight = 1;
+    private double reflexWeight = .1;
+    private double mathWeight = .1;
+    private double memWeight = .1;
     private double maleMultiplier = 1;
-    private double femaleMultiplier = 1;
+    private double femaleMultiplier = .8;
     private double weightModifier = .01;
     private double ageModifier = .01;
     private double whiteMultiplier = 1;
@@ -35,61 +35,38 @@ public class analyzeData extends AppCompatActivity {
         double score = getScore(profile);
 
         TextView scoreview = (TextView) findViewById(R.id.finalScore);
-        scoreview.setText(String.valueOf(score));
+        scoreview.setText("total: " + String.valueOf(score));
 
-        TextView race = (TextView) findViewById(R.id.race);
-        race.setText(profile.race);
-
-        TextView weight = (TextView) findViewById(R.id.weight);
-        weight.setText(profile.weight);
+        TextView weight = (TextView) findViewById(R.id.thisweight);
+        weight.setText("pounds: " + String.valueOf(profile.weight));
 
         TextView sex = (TextView) findViewById(R.id.sex);
-        sex.setText(profile.sex);
+        sex.setText("genitals: " + profile.sex);
 
         TextView age = (TextView) findViewById(R.id.age);
-        age.setText(profile.age);
+        age.setText("old-ness: " + String.valueOf(profile.age));
 
         TextView ref = (TextView) findViewById(R.id.reflex);
-        ref.setText(String.valueOf(profile.reflexScore));
+        ref.setText("reflexScore: " + String.valueOf(profile.reflexScore));
 
         TextView math = (TextView) findViewById(R.id.math);
-        math.setText(String.valueOf(profile.mathScore));
+        math.setText("mathScore: " + String.valueOf(profile.mathScore));
 
         TextView mem = (TextView) findViewById(R.id.mem);
-        mem.setText(String.valueOf(profile.memScore));
-
+        mem.setText("memScore: " + String.valueOf(profile.memScore));
     }
 
     private double getScore(Profile profile) {
-        double sexModifier, raceModifier = 1;
+        double sexModifier = 1;
         if (profile.sex.equals("Male")) {
             sexModifier = maleMultiplier;
         } else {
             sexModifier = femaleMultiplier;
         }
-        switch (profile.race) {
-            case "White":
-                raceModifier = whiteMultiplier;
-                break;
-            case "Black":
-                raceModifier = blackMultiplier;
-                break;
-            case "Asian":
-                raceModifier = asianMultiplier;
-                break;
-            case "Hispanic":
-                raceModifier = hispanicMultiplier;
-                break;
-            case "Middle Eastern":
-                raceModifier = middleEasternMultiplier;
-                break;
-            case "Other":
-                raceModifier = otherMultiplier;
-        }
 
         double testScore = ((reflexWeight * profile.reflexScore) + (mathWeight * profile.mathScore)
                 + (memWeight * profile.memScore))/3;
-        double score = testScore * raceModifier * sexModifier * weightModifier * profile.weight * ageModifier * profile.age;
+        double score = testScore * sexModifier * weightModifier * profile.weight * ageModifier * profile.age;
         return score;
     }
 }
