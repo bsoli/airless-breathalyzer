@@ -10,4 +10,59 @@
     tools:showIn="@layout/activity_short_term_memory_test_finish"
     tools:context="com.aabb.airlessbreathalyzer.shortTermMemoryTestFinish">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New Text"
+        android:id="@+id/memTestFinishTitle"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:prompt="@string/word1prompt"
+        android:id="@+id/word1"
+        android:layout_below="@+id/memTestFinishTitle"
+        android:layout_centerHorizontal="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:prompt="@string/word2prompt"
+        android:id="@+id/word2"
+        android:layout_below="@+id/word1"
+        android:layout_centerHorizontal="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:prompt="@string/word3prompt"
+        android:id="@+id/word3"
+        android:layout_below="@+id/word2"
+        android:layout_centerHorizontal="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:prompt="@string/word4prompt"
+        android:id="@+id/word4"
+        android:layout_below="@+id/word3"
+        android:layout_centerHorizontal="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:prompt="@string/word5prompt"
+        android:id="@+id/word5"
+        android:layout_below="@+id/word4"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/submitMem"
+        android:id="@+id/button2"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
 </RelativeLayout>

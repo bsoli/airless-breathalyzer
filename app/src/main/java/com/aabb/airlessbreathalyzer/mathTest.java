@@ -2,101 +2,109 @@ package com.aabb.airlessbreathalyzer;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Random;
 
 public class mathTest extends AppCompatActivity {
+    private final String tag = "MathActivity";
+
+    private Profile profile;
+    private TextView question;
+    private Button answer1;
+    private Button answer2;
+    private Button answer3;
+    private long startTime;
+    private int times = 0;
+    private int questions = 4;
+    private String correctAnswer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_math_test);
 
-        final String[] questionAndAnswers = generateQuestionAndAnswers();
+        Bundle bundle = this.getIntent().getExtras();
+        profile = bundle.getParcelable(getString(R.string.profile));
 
-        TextView question = (TextView) findViewById(R.id.question);
-        Button answer1 = (Button) findViewById(R.id.answer1);
-        Button answer2 = (Button) findViewById(R.id.answer2);
-        Button answer3 = (Button) findViewById(R.id.answer3);
+        startTime = System.currentTimeMillis();
 
-        final String[] randomizedQuestions = randomizeQuestions(Arrays.copyOfRange(questionAndAnswers, 1,4));
+        question = (TextView) findViewById(R.id.question);
+        answer1 = (Button) findViewById(R.id.answer1);
+        answer2 = (Button) findViewById(R.id.answer2);
+        answer3 = (Button) findViewById(R.id.answer3);
+
+        populateView();
+    }
+
+    public void populateView() {
+        String[] questionAndAnswers = generateQuestionAndAnswers();
+        //String[] randomizedQuestions = randomizeQuestions(Arrays.copyOfRange(questionAndAnswers, 1, 4));
+        final ArrayList<String> randomizedQuestions = new ArrayList<String>();
+        correctAnswer = questionAndAnswers[1];
+        randomizedQuestions.add(questionAndAnswers[1]);
+        randomizedQuestions.add(questionAndAnswers[2]);
+        randomizedQuestions.add(questionAndAnswers[3]);
+        Collections.shuffle(randomizedQuestions);
+
+        for(int i = 0; i < questionAndAnswers.length; i++) {
+            Log.d(tag, questionAndAnswers[i]);
+        }
+        for(int i = 0; i < randomizedQuestions.size(); i++) {
+            Log.d(tag, randomizedQuestions.get(i));
+        }
 
         question.setText(questionAndAnswers[0]);
-        answer1.setText(randomizedQuestions[0]);
-        answer2.setText(randomizedQuestions[1]);
-        answer3.setText(randomizedQuestions[2]);
-
+        answer1.setText(randomizedQuestions.get(0));
         answer1.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                if (questionAndAnswers[1].equals(randomizedQuestions[0])) {
-                    Snackbar.make(view, "Correct!", Snackbar.LENGTH_LONG)
-                            .setAction("Action", null).show();
-
-                } else {
-                    Snackbar.make(view, "LOL, WRONG!", Snackbar.LENGTH_LONG)
-                            .setAction("Action", null).show();
-                }
-                Intent myIntent = new Intent(getBaseContext(), null); //this will lead to the command manager
-                startActivity(myIntent);
-
+            public void onClick(View v) {
+                wasClicked(randomizedQuestions.get(0));
             }
         });
-
+        answer2.setText(randomizedQuestions.get(1));
         answer2.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                if (questionAndAnswers[1].equals(randomizedQuestions[1])) {
-                    Snackbar.make(view, "Correct!", Snackbar.LENGTH_LONG)
-                            .setAction("Action", null).show();
-
-                }
-                else {
-                    Snackbar.make(view, "LOL, WRONG!", Snackbar.LENGTH_LONG)
-                            .setAction("Action", null).show();
-                }
-                Intent myIntent = new Intent(getBaseContext(), null); //this will lead to the command manager
-                startActivity(myIntent);
+            public void onClick(View v) {
+                wasClicked(randomizedQuestions.get(1));
             }
         });
-
+        answer3.setText(randomizedQuestions.get(2));
         answer3.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                if (questionAndAnswers[1].equals(randomizedQuestions[1])) {
-                Snackbar.make(view, "Correct!", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-
-                }
-                else {
-                    Snackbar.make(view, "LOL, WRONG!", Snackbar.LENGTH_LONG)
-                            .setAction("Action", null).show();
-                }
-                Intent myIntent = new Intent(getBaseContext(), null); //this will lead to the command manager
-                startActivity(myIntent);
+            public void onClick(View v) {
+                wasClicked(randomizedQuestions.get(2));
             }
         });
     }
 
-    private String[] randomizeQuestions(String[] questions) {
-        String[] newQuestions = new String[3];
-        ArrayList<Integer> newIndices = new ArrayList<>();
-        Random r = new Random();
-        while(newIndices.size() < 3) {
-            int newIndex = r.nextInt(3);
-            if (!newIndices.contains(newIndex)) {
-                newQuestions[newIndex] = questions[newIndex];
-                newIndices.add(newIndex);
-            }
+    private void wasClicked(String attemptedAnswer) {
+        times++;
+        if (correctAnswer.equals(attemptedAnswer)) {
+            questions--;
         }
-        return newQuestions;
+        if (times < 3) {
+            populateView();
+        }
+        else {
+            long endTime = System.currentTimeMillis();
+            double score = (((endTime-startTime)/1000.0)/3.0) * questions;
+            profile.mathScore = score;
+            Intent myIntent = new Intent(getBaseContext(), shortTermMemoryTestFinish.class);
+            Bundle bundle = new Bundle();
+            bundle.putParcelable(getString(R.string.profile), profile);
+            myIntent.putExtras(bundle);
+            startActivity(myIntent);
+        }
     }
 
     private String[] generateQuestionAndAnswers() {

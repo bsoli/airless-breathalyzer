@@ -1,6 +1,7 @@
 package com.aabb.airlessbreathalyzer;
 
 
+import android.content.Intent;
 import android.graphics.Point;
 import android.os.Bundle;
 import android.os.Handler;
@@ -16,9 +17,10 @@ import android.widget.TextView;
 
 public class reflexTest extends AppCompatActivity {
 
-    private int numRuns = 20;
+    private int numRuns = 7;
     private int countRuns = 0;
     private long totalTime = 0;
+    private long totalDelay = 0;
 
     private TextView timer;
     private TextView totalTimer;
@@ -29,6 +31,9 @@ public class reflexTest extends AppCompatActivity {
     private float bufferX = 10;//TODO Fix this for multiple platforms
     private String tag = "Reflex";
     private Button button;
+
+    private Profile profile;
+
 
 
     //runs without a timer by reposting this handler at the end of the runnable
@@ -58,6 +63,9 @@ public class reflexTest extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reflex_test);
 
+        Bundle bundle = this.getIntent().getExtras();
+        profile = bundle.getParcelable(getString(R.string.profile));
+
         button = (Button) findViewById(R.id.button);
         timer = (TextView) findViewById(R.id.timer);
         totalTimer = (TextView) findViewById(R.id.totalTime);
@@ -71,7 +79,6 @@ public class reflexTest extends AppCompatActivity {
         startTime = System.currentTimeMillis();
 
         timerHandler.postDelayed(timerRunnable, 0);
-
     }
 
     public void buttonClicked(View view) {
@@ -87,7 +94,7 @@ public class reflexTest extends AppCompatActivity {
             totalTimer.setText(String.format("%d:%02d:%03d", minutes, seconds, m));
 
             long randDelay = (int) (Math.random() * 3000);
-
+            totalDelay += randDelay;
             startTime = System.currentTimeMillis() + randDelay;
             moveButton();
             timerHandler.postDelayed(timerRunnable, randDelay);
@@ -95,6 +102,13 @@ public class reflexTest extends AppCompatActivity {
         } else {
             //TODO Move to next test
             timerHandler.removeCallbacks(timerRunnable);
+            double score = ((totalTime)/1000)/numRuns;
+            profile.reflexScore = score;
+            Intent myIntent = new Intent(getBaseContext(), mathTest.class);
+            Bundle bundle = new Bundle();
+            bundle.putParcelable(getString(R.string.profile), profile);
+            myIntent.putExtras(bundle);
+            startActivity(myIntent);
         }
     }
 
@@ -109,25 +123,3 @@ public class reflexTest extends AppCompatActivity {
         button.setY(newY);
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
