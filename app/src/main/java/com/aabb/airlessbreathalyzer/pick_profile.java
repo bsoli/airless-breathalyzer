@@ -119,7 +119,4 @@ public class pick_profile extends AppCompatActivity {
         }
         return found;
     }
-
-
-
 }

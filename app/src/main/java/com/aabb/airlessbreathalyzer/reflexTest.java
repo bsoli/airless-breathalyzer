@@ -32,6 +32,8 @@ public class reflexTest extends AppCompatActivity {
     private String tag = "Reflex";
     private Button button;
 
+    private boolean buttonWasClicked;
+
     private Profile profile;
 
 
@@ -43,17 +45,6 @@ public class reflexTest extends AppCompatActivity {
         @Override
         public void run() {
             button.setVisibility(View.VISIBLE);
-
-            long millis = System.currentTimeMillis() - startTime;
-            int m = (int) millis % 1000;
-            int seconds = (int) (millis / 1000);
-            int minutes = seconds / 60;
-            seconds = seconds % 60;
-
-            timer.setText(String.format("%d:%02d:%03d", minutes, seconds, m));
-
-            timerHandler.postDelayed(this, 3);
-
         }
 
     };
@@ -62,9 +53,12 @@ public class reflexTest extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reflex_test);
+        Log.d(tag, "on create called");
 
         Bundle bundle = this.getIntent().getExtras();
         profile = bundle.getParcelable(getString(R.string.profile));
+
+        buttonWasClicked = false;
 
         button = (Button) findViewById(R.id.button);
         timer = (TextView) findViewById(R.id.timer);
@@ -77,8 +71,6 @@ public class reflexTest extends AppCompatActivity {
         height = size.y;
 
         startTime = System.currentTimeMillis();
-
-        timerHandler.postDelayed(timerRunnable, 0);
     }
 
     public void buttonClicked(View view) {
@@ -98,6 +90,7 @@ public class reflexTest extends AppCompatActivity {
             startTime = System.currentTimeMillis() + randDelay;
             moveButton();
             timerHandler.postDelayed(timerRunnable, randDelay);
+
             countRuns++;
         } else {
             //TODO Move to next test

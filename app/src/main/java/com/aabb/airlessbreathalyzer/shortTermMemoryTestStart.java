@@ -2,6 +2,7 @@ package com.aabb.airlessbreathalyzer;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.os.Handler;
 import android.provider.UserDictionary;
 import android.support.design.widget.FloatingActionButton;
@@ -19,33 +20,7 @@ import java.util.Random;
 public class shortTermMemoryTestStart extends AppCompatActivity {
     private TextView t1, t2, t3, t4, t5, timer;
 
-    private long startTime;
-
     private Profile profile;
-
-    private Handler timerHandler = new Handler();
-    private Runnable timerRunnable = new Runnable() {
-
-        @Override
-        public void run() {
-
-            long millis = System.currentTimeMillis() - startTime;
-            int m = (int) millis % 1000;
-            int seconds = (int) (millis / 1000);
-            int minutes = seconds / 60;
-            seconds = seconds % 60;
-
-            timer.setText(String.format("%d", 5-seconds));
-
-            timerHandler.postDelayed(this, 3);
-
-            if(seconds == 5) {
-                startTest();
-            }
-
-        }
-
-    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,9 +41,16 @@ public class shortTermMemoryTestStart extends AppCompatActivity {
 
         populateWords();
 
-        startTime = System.currentTimeMillis();
+        new CountDownTimer(10000, 1000) {
 
-        timerHandler.postDelayed(timerRunnable, 0);
+            public void onTick(long millisUntilFinished) {
+                timer.setText("seconds remaining: " + millisUntilFinished / 1000);
+            }
+
+            public void onFinish() {
+                startTest();
+            }
+        }.start();
 
     }
 

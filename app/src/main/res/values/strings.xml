@@ -43,4 +43,5 @@
     <string name="title_activity_short_term_memory_test_finish">short_term_memory_test_finish</string>
     <string name="profile">profile</string>
     <string name="submitMem">Submit Guess</string>
+    <string name="title_activity_level">LevelActivity</string>
 </resources>
