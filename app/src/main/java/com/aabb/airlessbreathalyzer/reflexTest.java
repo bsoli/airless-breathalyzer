@@ -51,7 +51,6 @@ public class reflexTest extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reflex_test);
-        //Log.d(tag, "on create called");
 
         Bundle bundle = this.getIntent().getExtras();
         profile = bundle.getParcelable(getString(R.string.profile));
@@ -60,7 +59,6 @@ public class reflexTest extends AppCompatActivity {
 
         button = (ImageButton) findViewById(R.id.button);
         timer = (TextView) findViewById(R.id.timer);
-        //totalTimer = (TextView) findViewById(R.id.totalTime);
 
         Display display = getWindowManager().getDefaultDisplay();
         Point size = new Point();
@@ -94,13 +92,6 @@ public class reflexTest extends AppCompatActivity {
                     break;
             }
 
-
-            int m = (int) totalTime % 1000;
-            int seconds = (int) (totalTime / 1000);
-            int minutes = seconds / 60;
-            seconds = seconds % 60;
-            //totalTimer.setText(String.format("%d:%02d:%03d", minutes, seconds, m));
-
             long randDelay = (int) (Math.random() * 3000);
             totalDelay += randDelay;
             startTime = System.currentTimeMillis() + randDelay;
@@ -110,7 +101,7 @@ public class reflexTest extends AppCompatActivity {
             countRuns++;
         } else {
             timerHandler.removeCallbacks(timerRunnable);
-            double score = ((totalTime) / 1000) / numRuns;
+            double score = ((totalTime) / 1000.0) / 6.0;
             profile.reflexScore = score;
             Intent myIntent = new Intent(getBaseContext(), mathTest.class);
             Bundle bundle = new Bundle();
@@ -121,12 +112,8 @@ public class reflexTest extends AppCompatActivity {
     }
 
     public void moveButton() {
-        // Log.v(tag, "Width: " + width);
         float newX = (float) Math.random() * (width - (button.getWidth() + bufferX));
-        //Log.v(tag, "newX: " + newX);
-        //Log.v(tag, "Height: " + height);
         float newY = (float) Math.random() * (height - (button.getHeight() + bufferY));
-        //Log.v(tag, "newY: " + newY);
         button.setX(newX);
         button.setY(newY);
     }

@@ -16,8 +16,6 @@ public class Profile implements Parcelable {
     public String word1;
     public String word2;
     public String word3;
-    public String word4;
-    public String word5;
     public double memScore;
     public double reflexScore;
     public double mathScore;
@@ -39,8 +37,6 @@ public class Profile implements Parcelable {
         word1 = in.readString();
         word2 = in.readString();
         word3 = in.readString();
-        word4 = in.readString();
-        word5 = in.readString();
         memScore = in.readDouble();
         reflexScore = in.readDouble();
         mathScore = in.readDouble();
@@ -72,8 +68,6 @@ public class Profile implements Parcelable {
         dest.writeString(word1);
         dest.writeString(word2);
         dest.writeString(word3);
-        dest.writeString(word4);
-        dest.writeString(word5);
         dest.writeDouble(memScore);
         dest.writeDouble(reflexScore);
         dest.writeDouble(mathScore);

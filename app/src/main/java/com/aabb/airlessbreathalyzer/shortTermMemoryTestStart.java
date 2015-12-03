@@ -18,7 +18,7 @@ import java.util.Arrays;
 import java.util.Random;
 
 public class shortTermMemoryTestStart extends AppCompatActivity {
-    private TextView t1, t2, t3, t4, t5, timer;
+    private TextView t1, t2, t3, timer;
 
     private Profile profile;
 
@@ -33,8 +33,6 @@ public class shortTermMemoryTestStart extends AppCompatActivity {
         t1 = (TextView) findViewById(R.id.textView);
         t2 = (TextView) findViewById(R.id.textView2);
         t3 = (TextView) findViewById(R.id.textView3);
-        t4 = (TextView) findViewById(R.id.textView4);
-        t5 = (TextView) findViewById(R.id.textView5);
 
         timer = (TextView) findViewById(R.id.timer);
 
@@ -50,15 +48,14 @@ public class shortTermMemoryTestStart extends AppCompatActivity {
                 startTest();
             }
         }.start();
-
     }
 
     private void populateWords() {
         String[] words = getResources().getStringArray(R.array.Wordlist);
-        String [] memory =  new String[5];
+        String [] memory =  new String[3];
         int i = 0;
         Random rand = new Random();
-        while( i < 5) {
+        while( i < 3) {
             int index = rand.nextInt(words.length);
             if(!Arrays.asList(memory).contains(words[index])){
                 memory[i] = words[index];
@@ -68,13 +65,9 @@ public class shortTermMemoryTestStart extends AppCompatActivity {
         profile.word1 = memory[0];
         profile.word2 = memory[1];
         profile.word3 = memory[2];
-        profile.word4 = memory[3];
-        profile.word5 = memory[4];
         t1.setText(memory[0]);
         t2.setText(memory[1]);
         t3.setText(memory[2]);
-        t4.setText(memory[3]);
-        t5.setText(memory[4]);
     }
 
     public void startTest() {

@@ -44,6 +44,7 @@
     <string name="profile">profile</string>
     <string name="submitMem">Submit Guess</string>
     <string name="title_activity_level">LevelActivity</string>
+    <string name="home">Back to Home</string>
     <string name="prereflex"><u><b><i>Tap the Drinks!</i></b></u></string>
     <string name="mathTitle"><u><b><i>Solve the Problem!</i></b></u></string>
 </resources>

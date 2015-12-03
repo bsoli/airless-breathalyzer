@@ -16,7 +16,6 @@ import java.util.Collections;
 import java.util.Random;
 
 public class mathTest extends AppCompatActivity {
-    private final String tag = "MathActivity";
 
     private Profile profile;
     private TextView question;
@@ -25,7 +24,7 @@ public class mathTest extends AppCompatActivity {
     private Button answer3;
     private long startTime;
     private int times = 0;
-    private int questions = 4;
+    private double questions = 4.0;
     private String correctAnswer;
 
     @Override
@@ -48,20 +47,12 @@ public class mathTest extends AppCompatActivity {
 
     public void populateView() {
         String[] questionAndAnswers = generateQuestionAndAnswers();
-        //String[] randomizedQuestions = randomizeQuestions(Arrays.copyOfRange(questionAndAnswers, 1, 4));
         final ArrayList<String> randomizedQuestions = new ArrayList<String>();
         correctAnswer = questionAndAnswers[1];
         randomizedQuestions.add(questionAndAnswers[1]);
         randomizedQuestions.add(questionAndAnswers[2]);
         randomizedQuestions.add(questionAndAnswers[3]);
         Collections.shuffle(randomizedQuestions);
-
-        for(int i = 0; i < questionAndAnswers.length; i++) {
-            Log.d(tag, questionAndAnswers[i]);
-        }
-        for(int i = 0; i < randomizedQuestions.size(); i++) {
-            Log.d(tag, randomizedQuestions.get(i));
-        }
 
         question.setText(questionAndAnswers[0]);
         answer1.setText(randomizedQuestions.get(0));
@@ -97,7 +88,8 @@ public class mathTest extends AppCompatActivity {
         }
         else {
             long endTime = System.currentTimeMillis();
-            double score = (((endTime-startTime)/1000.0)/3.0) * questions;
+            double timeMult = ((endTime-startTime)/1000.0)/3.0;
+            double score = timeMult * questions;
             profile.mathScore = score;
             Intent myIntent = new Intent(getBaseContext(), shortTermMemoryTestFinish.class);
             Bundle bundle = new Bundle();

@@ -26,8 +26,6 @@ public class shortTermMemoryTestFinish extends AppCompatActivity {
         final EditText word1 = (EditText) findViewById(R.id.word1);
         final EditText word2 = (EditText) findViewById(R.id.word2);
         final EditText word3 = (EditText) findViewById(R.id.word3);
-        final EditText word4 = (EditText) findViewById(R.id.word4);
-        final EditText word5 = (EditText) findViewById(R.id.word5);
 
         Button sub = (Button) findViewById(R.id.button2);
 
@@ -36,10 +34,8 @@ public class shortTermMemoryTestFinish extends AppCompatActivity {
             public void onClick(View view) {
                 double score = 0;
                 String[] attemptedWords = {word1.getText().toString(), word2.getText().toString(),
-                        word3.getText().toString(), word4.getText().toString(),
-                        word5.getText().toString()};
-                String[] correctWords = {profile.word1, profile.word2, profile.word3,
-                        profile.word4, profile.word5};
+                        word3.getText().toString()};
+                String[] correctWords = {profile.word1, profile.word2, profile.word3};
                 boolean foundMatch = false;
                 for (String attempt : attemptedWords) {
                     for (String correct : correctWords) {
