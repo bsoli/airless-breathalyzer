@@ -13,11 +13,12 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 public class reflexTest extends AppCompatActivity {
 
-    private int numRuns = 7;
+    private int numRuns = 5;
     private int countRuns = 0;
     private long totalTime = 0;
     private long totalDelay = 0;
@@ -29,14 +30,11 @@ public class reflexTest extends AppCompatActivity {
     private int width = 0;
     private float bufferY = 310;//TODO Fix this for multiple platforms
     private float bufferX = 10;//TODO Fix this for multiple platforms
-    private String tag = "Reflex";
-    private Button button;
+    private ImageButton button;
 
     private boolean buttonWasClicked;
 
     private Profile profile;
-
-
 
     //runs without a timer by reposting this handler at the end of the runnable
     private Handler timerHandler = new Handler();
@@ -53,16 +51,16 @@ public class reflexTest extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reflex_test);
-        Log.d(tag, "on create called");
+        //Log.d(tag, "on create called");
 
         Bundle bundle = this.getIntent().getExtras();
         profile = bundle.getParcelable(getString(R.string.profile));
 
         buttonWasClicked = false;
 
-        button = (Button) findViewById(R.id.button);
+        button = (ImageButton) findViewById(R.id.button);
         timer = (TextView) findViewById(R.id.timer);
-        totalTimer = (TextView) findViewById(R.id.totalTime);
+        //totalTimer = (TextView) findViewById(R.id.totalTime);
 
         Display display = getWindowManager().getDefaultDisplay();
         Point size = new Point();
@@ -78,12 +76,26 @@ public class reflexTest extends AppCompatActivity {
             timerHandler.removeCallbacks(timerRunnable);
             button.setVisibility(View.INVISIBLE);
             totalTime += (System.currentTimeMillis() - startTime);
+            String s = "drink2";
+            switch (countRuns) {
+                case 0 : button.setImageResource(R.drawable.drink2);
+                    break;
+                case 1 : button.setImageResource(R.drawable.drink3);
+                    break;
+                case 2 : button.setImageResource(R.drawable.drink4);
+                    break;
+                case 3 : button.setImageResource(R.drawable.drink5);
+                    break;
+                case 4 : button.setImageResource(R.drawable.drink6);
+                    break;
+            }
+
 
             int m = (int) totalTime % 1000;
             int seconds = (int) (totalTime / 1000);
             int minutes = seconds / 60;
             seconds = seconds % 60;
-            totalTimer.setText(String.format("%d:%02d:%03d", minutes, seconds, m));
+            //totalTimer.setText(String.format("%d:%02d:%03d", minutes, seconds, m));
 
             long randDelay = (int) (Math.random() * 3000);
             totalDelay += randDelay;
@@ -93,7 +105,6 @@ public class reflexTest extends AppCompatActivity {
 
             countRuns++;
         } else {
-            //TODO Move to next test
             timerHandler.removeCallbacks(timerRunnable);
             double score = ((totalTime)/1000)/numRuns;
             profile.reflexScore = score;
@@ -106,12 +117,12 @@ public class reflexTest extends AppCompatActivity {
     }
 
     public void moveButton() {
-        Log.v(tag, "Width: " + width);
+       // Log.v(tag, "Width: " + width);
         float newX = (float) Math.random() * (width - (button.getWidth() + bufferX));
-        Log.v(tag, "newX: " + newX);
-        Log.v(tag, "Height: " + height);
+        //Log.v(tag, "newX: " + newX);
+        //Log.v(tag, "Height: " + height);
         float newY = (float) Math.random() * (height - (button.getHeight() + bufferY));
-        Log.v(tag, "newY: " + newY);
+        //Log.v(tag, "newY: " + newY);
         button.setX(newX);
         button.setY(newY);
     }

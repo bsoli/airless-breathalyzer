@@ -40,8 +40,8 @@
         android:layout_height="wrap_content"
         android:text="Delete Local Data"
         android:id="@+id/delete"
-        android:layout_alignParentBottom="true"
-        android:layout_alignRight="@+id/spinner"
-        android:layout_alignEnd="@+id/spinner"
-        android:layout_marginBottom="77dp" />
+        android:layout_below="@+id/newProfile"
+        android:layout_alignRight="@+id/newProfile"
+        android:layout_alignEnd="@+id/newProfile"
+        android:layout_marginTop="51dp" />
 </RelativeLayout>

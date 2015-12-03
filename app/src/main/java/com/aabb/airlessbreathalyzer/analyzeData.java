@@ -34,10 +34,10 @@ public class analyzeData extends AppCompatActivity {
         weight.setText("pounds: " + String.valueOf(profile.weight));
 
         TextView sex = (TextView) findViewById(R.id.sex);
-        sex.setText("genitals: " + profile.sex);
+        sex.setText("sex: " + profile.sex);
 
         TextView age = (TextView) findViewById(R.id.age);
-        age.setText("old-ness: " + String.valueOf(profile.age));
+        age.setText("age: " + String.valueOf(profile.age));
 
         TextView ref = (TextView) findViewById(R.id.reflex);
         ref.setText("reflexScore: " + String.valueOf(profile.reflexScore));

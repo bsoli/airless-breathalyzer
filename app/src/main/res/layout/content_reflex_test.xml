@@ -10,34 +10,15 @@
     tools:showIn="@layout/activity_reflex_test"
     tools:context="com.aabb.airlessbreathalyzer.reflexTest">
 
-    <Button
+    <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Catch Me"
         android:id="@+id/button"
+        android:src="@drawable/drink6"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:onClick="buttonClicked"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="0:00:00"
-        android:id="@+id/timer"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="46dp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="0:00:00"
-        android:id="@+id/totalTime"
-        android:layout_alignBottom="@+id/timer"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
 </RelativeLayout>
