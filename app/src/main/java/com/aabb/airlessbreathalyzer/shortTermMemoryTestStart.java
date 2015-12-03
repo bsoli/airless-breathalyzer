@@ -29,7 +29,6 @@ public class shortTermMemoryTestStart extends AppCompatActivity {
 
         Bundle bundle = this.getIntent().getExtras();
         profile = bundle.getParcelable(getString(R.string.profile));
-        System.out.println("*************************************"+profile);
 
         t1 = (TextView) findViewById(R.id.textView);
         t2 = (TextView) findViewById(R.id.textView2);
@@ -44,7 +43,7 @@ public class shortTermMemoryTestStart extends AppCompatActivity {
         new CountDownTimer(10000, 1000) {
 
             public void onTick(long millisUntilFinished) {
-                timer.setText("seconds remaining: " + millisUntilFinished / 1000);
+                timer.setText(String.valueOf(millisUntilFinished / 1000));
             }
 
             public void onFinish() {
@@ -79,10 +78,22 @@ public class shortTermMemoryTestStart extends AppCompatActivity {
     }
 
     public void startTest() {
-        Intent myIntent = new Intent(getBaseContext(), reflexTest.class);
-        Bundle bundle = new Bundle();
-        bundle.putParcelable(getString(R.string.profile), profile);
-        myIntent.putExtras(bundle);
-        startActivity(myIntent);
+        this.setContentView(R.layout.pre_reflex);
+        new CountDownTimer(5000, 1000) {
+            final TextView timer2 = (TextView) findViewById(R.id.timer2);
+
+            public void onTick(long millisUntilFinished) {
+                timer2.setText(String.valueOf(millisUntilFinished / 1000));
+            }
+
+            public void onFinish() {
+                Intent myIntent = new Intent(getBaseContext(), reflexTest.class);
+                Bundle bundle = new Bundle();
+                bundle.putParcelable(getString(R.string.profile), profile);
+                myIntent.putExtras(bundle);
+                startActivity(myIntent);
+            }
+        }.start();
+
     }
 }

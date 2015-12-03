@@ -9,11 +9,30 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:showIn="@layout/activity_math_test" tools:context="com.aabb.airlessbreathalyzer.mathTest">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/mathTitle"
+        android:id="@+id/mathTitle"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="57dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Large Text"
+        android:id="@+id/question"
+        android:layout_marginTop="96dp"
+        android:layout_below="@+id/mathTitle"
+        android:layout_alignLeft="@+id/answer1"
+        android:layout_alignStart="@+id/answer1" />
+
     <Button
         style="?android:attr/buttonStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="New Button"
         android:id="@+id/answer1"
         android:layout_above="@+id/answer3"
         android:layout_alignParentLeft="true"
@@ -26,7 +45,6 @@
         style="?android:attr/buttonStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="New Button"
         android:id="@+id/answer2"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
@@ -38,7 +56,6 @@
         style="?android:attr/buttonStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="New Button"
         android:id="@+id/answer3"
         android:layout_above="@+id/answer2"
         android:layout_alignParentLeft="true"
@@ -47,25 +64,6 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Solve The Problem"
-        android:id="@+id/mathTestTitle"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:singleLine="true" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Large Text"
-        android:id="@+id/question"
-        android:layout_marginTop="96dp"
-        android:layout_below="@+id/mathTestTitle"
-        android:layout_alignLeft="@+id/answer1"
-        android:layout_alignStart="@+id/answer1" />
 
 </RelativeLayout>

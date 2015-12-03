@@ -26,9 +26,9 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Medium Text"
         android:id="@+id/textView"
-        android:layout_marginTop="53dp"
-        android:layout_below="@+id/Instructions"
-        android:layout_centerHorizontal="true" />
+        android:layout_marginTop="57dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="57dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -36,10 +36,9 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Medium Text"
         android:id="@+id/textView2"
-        android:layout_above="@+id/textView3"
-        android:layout_alignLeft="@+id/textView"
-        android:layout_alignStart="@+id/textView"
-        android:layout_marginBottom="67dp" />
+        android:layout_below="@id/textView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="57dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -47,8 +46,9 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Medium Text"
         android:id="@+id/textView3"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_below="@id/textView2"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="57dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -56,10 +56,9 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Medium Text"
         android:id="@+id/textView4"
-        android:layout_marginTop="48dp"
-        android:layout_below="@+id/textView3"
-        android:layout_alignLeft="@+id/textView3"
-        android:layout_alignStart="@+id/textView3" />
+        android:layout_below="@id/textView3"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="57dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -67,9 +66,9 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Medium Text"
         android:id="@+id/textView5"
-        android:layout_marginTop="56dp"
-        android:layout_below="@+id/textView4"
-        android:layout_centerHorizontal="true" />
+        android:layout_below="@id/textView4"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="57dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -78,8 +77,6 @@
         android:text="Large Text"
         android:id="@+id/timer"
         android:layout_below="@+id/textView5"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

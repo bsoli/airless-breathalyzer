@@ -76,17 +76,21 @@ public class reflexTest extends AppCompatActivity {
             timerHandler.removeCallbacks(timerRunnable);
             button.setVisibility(View.INVISIBLE);
             totalTime += (System.currentTimeMillis() - startTime);
-            String s = "drink2";
             switch (countRuns) {
-                case 0 : button.setImageResource(R.drawable.drink2);
+                case 0:
+                    button.setImageResource(R.drawable.drink2);
                     break;
-                case 1 : button.setImageResource(R.drawable.drink3);
+                case 1:
+                    button.setImageResource(R.drawable.drink3);
                     break;
-                case 2 : button.setImageResource(R.drawable.drink4);
+                case 2:
+                    button.setImageResource(R.drawable.drink4);
                     break;
-                case 3 : button.setImageResource(R.drawable.drink5);
+                case 3:
+                    button.setImageResource(R.drawable.drink5);
                     break;
-                case 4 : button.setImageResource(R.drawable.drink6);
+                case 4:
+                    button.setImageResource(R.drawable.drink6);
                     break;
             }
 
@@ -106,7 +110,7 @@ public class reflexTest extends AppCompatActivity {
             countRuns++;
         } else {
             timerHandler.removeCallbacks(timerRunnable);
-            double score = ((totalTime)/1000)/numRuns;
+            double score = ((totalTime) / 1000) / numRuns;
             profile.reflexScore = score;
             Intent myIntent = new Intent(getBaseContext(), mathTest.class);
             Bundle bundle = new Bundle();
@@ -117,7 +121,7 @@ public class reflexTest extends AppCompatActivity {
     }
 
     public void moveButton() {
-       // Log.v(tag, "Width: " + width);
+        // Log.v(tag, "Width: " + width);
         float newX = (float) Math.random() * (width - (button.getWidth() + bufferX));
         //Log.v(tag, "newX: " + newX);
         //Log.v(tag, "Height: " + height);
