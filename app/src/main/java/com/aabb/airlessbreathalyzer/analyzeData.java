@@ -7,13 +7,15 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
+
 public class analyzeData extends AppCompatActivity {
 
     private Profile profile;
     private double reflexWeight = .1;
     private double mathWeight = .1;
     private double memWeight = .1;
-    private double maleMultiplier = 1;
     private double femaleMultiplier = .8;
     private double weightModifier = .008;
     private double ageModifier = .01;
@@ -26,19 +28,11 @@ public class analyzeData extends AppCompatActivity {
         //get the profile
         Bundle bundle = this.getIntent().getExtras();
         profile = bundle.getParcelable(getString(R.string.profile));
-        double score = getScore(profile);
+        String score = getScore(profile);
 
         TextView scoreview = (TextView) findViewById(R.id.finalScore);
-        scoreview.setText("total: " + String.valueOf(score));
-
-        TextView weight = (TextView) findViewById(R.id.thisweight);
-        weight.setText("pounds: " + String.valueOf(profile.weight));
-
-        TextView sex = (TextView) findViewById(R.id.sex);
-        sex.setText("sex: " + profile.sex);
-
-        TextView age = (TextView) findViewById(R.id.age);
-        age.setText("age: " + String.valueOf(profile.age));
+        String result = R.string.resultText1 + score + R.string.resultText2;
+        scoreview.setText(score);
 
         TextView ref = (TextView) findViewById(R.id.reflex);
         ref.setText("reflexScore: " + String.valueOf(profile.reflexScore));
@@ -59,17 +53,20 @@ public class analyzeData extends AppCompatActivity {
         });
     }
 
-    private double getScore(Profile profile) {
+    private String getScore(Profile profile) {
         double sexModifier = 1;
-        if (profile.sex.equals("Male")) {
-            sexModifier = maleMultiplier;
-        } else {
+        if (profile.sex.equals("Female")) {
             sexModifier = femaleMultiplier;
         }
 
         double testScore = ((reflexWeight * profile.reflexScore) + (mathWeight * profile.mathScore)
-                + (memWeight * profile.memScore))/3;
-        double score = testScore * sexModifier * weightModifier * profile.weight * ageModifier * profile.age;
-        return score;
+                + (memWeight * profile.memScore));
+        double score = testScore * sexModifier;
+        score = score * weightModifier * profile.weight;
+        score = score * ageModifier * profile.age;
+        DecimalFormat df = new DecimalFormat("#.###");
+        df.setRoundingMode(RoundingMode.CEILING);
+        String res = df.format(score);
+        return res;
     }
 }

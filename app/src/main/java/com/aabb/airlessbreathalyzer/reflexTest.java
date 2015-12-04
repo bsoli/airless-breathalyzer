@@ -101,7 +101,7 @@ public class reflexTest extends AppCompatActivity {
             countRuns++;
         } else {
             timerHandler.removeCallbacks(timerRunnable);
-            double score = ((totalTime) / 1000.0) / 6.0;
+            double score = (((totalTime) / 1000.0) / 6.0) * .01;
             profile.reflexScore = score;
             Intent myIntent = new Intent(getBaseContext(), mathTest.class);
             Bundle bundle = new Bundle();

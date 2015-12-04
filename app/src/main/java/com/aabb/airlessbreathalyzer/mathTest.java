@@ -24,7 +24,7 @@ public class mathTest extends AppCompatActivity {
     private Button answer3;
     private long startTime;
     private int times = 0;
-    private double questions = 4.0;
+    private double questions = 0.0;
     private String correctAnswer;
 
     @Override
@@ -80,8 +80,8 @@ public class mathTest extends AppCompatActivity {
 
     private void wasClicked(String attemptedAnswer) {
         times++;
-        if (correctAnswer.equals(attemptedAnswer)) {
-            questions--;
+        if (!correctAnswer.equals(attemptedAnswer)) {
+            questions +=.1;
         }
         if (times < 3) {
             populateView();

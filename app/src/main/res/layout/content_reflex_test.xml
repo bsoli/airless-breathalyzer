@@ -13,12 +13,12 @@
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Catch Me"
         android:id="@+id/button"
-        android:src="@drawable/drink6"
+        android:src="@drawable/drink1"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:onClick="buttonClicked"/>
+        android:onClick="buttonClicked"
+        android:background="@null" />
 
 </RelativeLayout>

@@ -47,4 +47,7 @@
     <string name="home">Back to Home</string>
     <string name="prereflex"><u><b><i>Tap the Drinks!</i></b></u></string>
     <string name="mathTitle"><u><b><i>Solve the Problem!</i></b></u></string>
+    <string name="finishMemTest"><u><b><i>Enter the Words In Order</i></b></u></string>
+    <string name="resultText1"><u><b><i>You got a: </i></b></u></string>
+    <string name="resultText2"><u><b><i> B.A.C.</i></b></u></string>
 </resources>

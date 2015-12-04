@@ -32,7 +32,8 @@ public class shortTermMemoryTestFinish extends AppCompatActivity {
         sub.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                double score = 0;
+                double matchScore = 0.0;
+                double orderScore = 0.0;
                 String[] attemptedWords = {word1.getText().toString(), word2.getText().toString(),
                         word3.getText().toString()};
                 String[] correctWords = {profile.word1, profile.word2, profile.word3};
@@ -41,20 +42,21 @@ public class shortTermMemoryTestFinish extends AppCompatActivity {
                     for (String correct : correctWords) {
                         if (attempt.equals(correct)) {
                             foundMatch = true;
-                        }
-                        if (foundMatch) {
-                            score += .1;
                             break;
                         }
                     }
+                    if (!foundMatch) {
+                        matchScore += .1;
+                    }
+                    foundMatch = false;
                 }
 
                 for (int i = 0; i < attemptedWords.length; i++) {
-                    if (attemptedWords[i].equals(correctWords[i]))
-                        score += .3;
+                    if (!attemptedWords[i].equals(correctWords[i]))
+                        orderScore += .1;
                 }
 
-                profile.memScore = 2 - score;
+                profile.memScore = matchScore * orderScore;
                 //start new activity and send the profile
                 Intent myIntent = new Intent(getBaseContext(), analyzeData.class);
                 Bundle newBundle = new Bundle();
