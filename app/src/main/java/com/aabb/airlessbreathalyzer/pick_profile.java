@@ -29,6 +29,13 @@ import static com.aabb.airlessbreathalyzer.R.id.newProfile;
 
 public class pick_profile extends AppCompatActivity {
 
+    /*
+    uses: spinner (arrayAdapter), intents, persists data (basic file local storage CSV-like)
+    read profiles from local storage and puts in spinnerArray
+    uses adapter to populate spinner
+    once a profile is picked we create a Profile object (see Profile class)
+    This object is then passed along the tests to aggregate results
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -87,6 +94,9 @@ public class pick_profile extends AppCompatActivity {
         });
     }
 
+    /*
+    uses streamreaders to get the Names
+     */
     private List<String> populateNames() throws Exception {
         FileInputStream in = openFileInput(getString(R.string.filename));
         InputStreamReader stream = new InputStreamReader(in);

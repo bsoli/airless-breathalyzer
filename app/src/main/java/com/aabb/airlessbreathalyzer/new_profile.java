@@ -23,6 +23,11 @@ public class new_profile extends AppCompatActivity {
         setContentView(R.layout.activity_new_profile);
 
         Button b = (Button) findViewById(R.id.button);
+        /*
+        gets the data from the UI
+        StreamWriters to write to local storage
+        returns to the original activity
+         */
         b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -30,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_main);
 
+        //Landing screen: click the button to start intent to pick the profile
         ImageButton enter = (ImageButton) findViewById(imageButton);
         enter.setOnClickListener(new View.OnClickListener() {
             @Override

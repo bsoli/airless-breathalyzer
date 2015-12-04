@@ -9,6 +9,15 @@ import android.os.Parcelable;
  */
 
 public class Profile implements Parcelable {
+    /*
+    Basic custom class that will store parameters for the profile
+    The tricky part here is making it Parcelable. The reason that we made
+    it parcelable is because this will be passed by multiple intents. In
+    order to avoid having to pass all of this data as key value pairs, we
+    wrap it into a parcelable object and can pass it as a whole object between
+    intents.
+     */
+
     public String name;
     public int age;
     public int weight;
@@ -29,6 +38,9 @@ public class Profile implements Parcelable {
         this.sex = data[3];
     }
 
+    /*
+    Constructor that takes a Parcel. We use this a lot
+     */
     protected Profile(Parcel in) {
         name = in.readString();
         age = in.readInt();
@@ -42,6 +54,10 @@ public class Profile implements Parcelable {
         mathScore = in.readDouble();
     }
 
+    /*
+    This is the stuff that we have to override to make it parcelable.
+    The most important method is writeToParcel
+     */
     public static final Creator<Profile> CREATOR = new Creator<Profile>() {
         @Override
         public Profile createFromParcel(Parcel in) {
@@ -59,6 +75,9 @@ public class Profile implements Parcelable {
         return 0;
     }
 
+    /*
+    Here we store every field of the object into the Parcel that we're transporting
+     */
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(name);
