@@ -13,8 +13,8 @@ import java.text.DecimalFormat;
 public class analyzeData extends AppCompatActivity {
 
     private Profile profile;
-    private double reflexWeight = .5;
-    private double mathWeight = .5;
+    private double reflexWeight = .8;
+    private double mathWeight = .3;
     private double memWeight = .5;
     private double femaleMultiplier = .8;
     private double weightModifier = .008;
@@ -34,14 +34,15 @@ public class analyzeData extends AppCompatActivity {
         String result = R.string.resultText1 + score + R.string.resultText2;
         scoreview.setText(score);
 
-        TextView ref = (TextView) findViewById(R.id.reflex);
-        ref.setText("reflexScore: " + String.valueOf(profile.reflexScore));
-
-        TextView math = (TextView) findViewById(R.id.math);
-        math.setText("mathScore: " + String.valueOf(profile.mathScore));
-
-        TextView mem = (TextView) findViewById(R.id.mem);
-        mem.setText("memScore: " + String.valueOf(profile.memScore));
+// uncomment to see individual scores
+//        TextView ref = (TextView) findViewById(R.id.reflex);
+//        ref.setText("reflexScore: " + String.valueOf(profile.reflexScore));
+//
+//        TextView math = (TextView) findViewById(R.id.math);
+//        math.setText("mathScore: " + String.valueOf(profile.mathScore));
+//
+//        TextView mem = (TextView) findViewById(R.id.mem);
+//        mem.setText("memScore: " + String.valueOf(profile.memScore));
 
         Button home = (Button) findViewById(R.id.home);
         home.setOnClickListener(new View.OnClickListener() {
@@ -63,7 +64,7 @@ public class analyzeData extends AppCompatActivity {
                 + (memWeight * profile.memScore));
         double score = testScore * sexModifier;
         score = score * weightModifier * profile.weight;
-        score = score * ageModifier * profile.age;
+        score = score * (1-(ageModifier * profile.age));
         DecimalFormat df = new DecimalFormat("#.###");
         df.setRoundingMode(RoundingMode.CEILING);
         String res = df.format(score);

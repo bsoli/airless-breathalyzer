@@ -21,6 +21,7 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:id="@+id/finalScore"
+        android:textSize="70sp"
         android:layout_below="@+id/analyzeTitle"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="39dp" />
