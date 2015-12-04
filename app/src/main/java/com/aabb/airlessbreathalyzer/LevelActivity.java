@@ -57,7 +57,6 @@ public class LevelActivity extends Activity {
     private Handler /* mHandler, */mHandlerN;
     private DecimalFormat d = new DecimalFormat("#.##");
     private float timestamp;
-    // private int quad;
     private boolean initState = true;
     private float[] gyroMatrix = new float[9];
     private float[] gyro = new float[3];
@@ -65,8 +64,6 @@ public class LevelActivity extends Activity {
     private static final float EPSILON = 0.000000001f;
     private float[] fusedOrientation = new float[3];
     private static final float FILTER_COEFFICIENT = 0.98f;
-    //	private Timer fuseTimer = null;
-    //private static final int TIME_CONSTANT = 30;
     private float[] mValuesOrientation = new float[3];
     private float[] mValuesOrientationOther = new float[3];
 
@@ -94,9 +91,7 @@ public class LevelActivity extends Activity {
         display.getSize(size);
         width = size.x;
         height = size.y;
-        // System.out.println("its width.."+width);
         tfAngle = Typeface.createFromAsset(getAssets(), "helvetica.ttf");
-        // System.out.println("its height.."+height);
         DisplayMetrics dm = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(dm);
         double x = Math.pow(dm.widthPixels/dm.xdpi,2);
@@ -106,11 +101,9 @@ public class LevelActivity extends Activity {
         System.out.println("debugScreen inches : " + screenInches);
         centerX = width / 2;// convertDpToPixel(pixelCenterX, this);
 
-        centerY = height / 2;// convertDpToPixel(pixelCenterY, thi
-        // mHandler = new Handler();
+        centerY = height / 2;// convertDpToPixel(pixelCenterY, this);
         mHandlerN = new Handler();
         mSensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
-        // d.setRoundingMode(RoundingMode.HALF_UP);
         d.setMaximumFractionDigits(3);
         d.setMinimumFractionDigits(3);
         gyroOrientation[0] = 0.0f;
@@ -137,10 +130,10 @@ public class LevelActivity extends Activity {
         setContentView(mSimulationView);
         makeScreenAwake();
 
-        //Bundle bundle = this.getIntent().getExtras();
-        //profile = bundle.getParcelable(getString(R.string.profile));
+        Bundle bundle = this.getIntent().getExtras();
+        profile = bundle.getParcelable(getString(R.string.profile));
 
-        new CountDownTimer(5000, 1000) {
+        new CountDownTimer(10000, 1000) {
 
             public void onTick(long millisUntilFinished) {
                 //timer.setText("seconds remaining: " + millisUntilFinished / 1000);

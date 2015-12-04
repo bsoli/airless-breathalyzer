@@ -4,6 +4,7 @@ package com.aabb.airlessbreathalyzer;
 import android.content.Intent;
 import android.graphics.Point;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -105,11 +106,7 @@ public class reflexTest extends AppCompatActivity {
             timerHandler.removeCallbacks(timerRunnable);
             double score = (((totalTime) / 1000.0) / 6.0) * .01;
             profile.reflexScore = score;
-            Intent myIntent = new Intent(getBaseContext(), mathTest.class);
-            Bundle bundle = new Bundle();
-            bundle.putParcelable(getString(R.string.profile), profile);
-            myIntent.putExtras(bundle);
-            startActivity(myIntent);
+            startTest();
         }
     }
 
@@ -121,5 +118,23 @@ public class reflexTest extends AppCompatActivity {
         float newY = (float) Math.random() * (height - (button.getHeight() + bufferY));
         button.setX(newX);
         button.setY(newY);
+    }
+
+    public void startTest() {
+        this.setContentView(R.layout.pre_bal);
+        new CountDownTimer(3000, 1000) {
+
+            public void onTick(long millisUntilFinished) {
+            }
+
+            public void onFinish() {
+                Intent myIntent = new Intent(getBaseContext(), LevelActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putParcelable(getString(R.string.profile), profile);
+                myIntent.putExtras(bundle);
+                startActivity(myIntent);
+            }
+        }.start();
+
     }
 }

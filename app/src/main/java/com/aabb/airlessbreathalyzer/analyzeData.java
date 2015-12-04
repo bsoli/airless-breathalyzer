@@ -13,9 +13,9 @@ import java.text.DecimalFormat;
 public class analyzeData extends AppCompatActivity {
 
     private Profile profile;
-    private double reflexWeight = .1;
-    private double mathWeight = .1;
-    private double memWeight = .1;
+    private double reflexWeight = .5;
+    private double mathWeight = .5;
+    private double memWeight = .5;
     private double femaleMultiplier = .8;
     private double weightModifier = .008;
     private double ageModifier = .01;

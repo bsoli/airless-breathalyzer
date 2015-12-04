@@ -50,4 +50,5 @@
     <string name="finishMemTest"><u><b><i>Enter the Words In Order</i></b></u></string>
     <string name="resultText1"><u><b><i>You got a: </i></b></u></string>
     <string name="resultText2"><u><b><i> B.A.C.</i></b></u></string>
+    <string name="prebal"><u><b><i>Hold the Phone Flat and Walk Forward!</i></b></u></string>
 </resources>
