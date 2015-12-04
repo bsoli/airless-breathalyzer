@@ -63,11 +63,6 @@ public class shortTermMemoryTestFinish extends AppCompatActivity {
                 startActivity(myIntent);
             }
         });
-
-
-
-
-
     }
 }
 

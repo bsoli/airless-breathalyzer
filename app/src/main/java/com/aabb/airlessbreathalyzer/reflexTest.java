@@ -23,8 +23,6 @@ public class reflexTest extends AppCompatActivity {
     private long totalTime = 0;
     private long totalDelay = 0;
 
-    private TextView timer;
-    private TextView totalTimer;
     private long startTime = 0;
     private int height = 0;
     private int width = 0;
@@ -32,11 +30,11 @@ public class reflexTest extends AppCompatActivity {
     private float bufferX = 10;//TODO Fix this for multiple platforms
     private ImageButton button;
 
-    private boolean buttonWasClicked;
-
     private Profile profile;
 
-    //runs without a timer by reposting this handler at the end of the runnable
+    /*
+    only thing that we use the threads for is setting the button to visible after a delay
+     */
     private Handler timerHandler = new Handler();
     private Runnable timerRunnable = new Runnable() {
 
@@ -55,10 +53,7 @@ public class reflexTest extends AppCompatActivity {
         Bundle bundle = this.getIntent().getExtras();
         profile = bundle.getParcelable(getString(R.string.profile));
 
-        buttonWasClicked = false;
-
         button = (ImageButton) findViewById(R.id.button);
-        timer = (TextView) findViewById(R.id.timer);
 
         Display display = getWindowManager().getDefaultDisplay();
         Point size = new Point();
@@ -69,6 +64,13 @@ public class reflexTest extends AppCompatActivity {
         startTime = System.currentTimeMillis();
     }
 
+    /*
+    hide button
+    update the total time
+    set the button image
+    move the button
+    tell it to reappear using a runnable thread
+     */
     public void buttonClicked(View view) {
         if (countRuns < numRuns) {
             timerHandler.removeCallbacks(timerRunnable);
@@ -111,6 +113,9 @@ public class reflexTest extends AppCompatActivity {
         }
     }
 
+    /*
+    moves button using math
+     */
     public void moveButton() {
         float newX = (float) Math.random() * (width - (button.getWidth() + bufferX));
         float newY = (float) Math.random() * (height - (button.getHeight() + bufferY));

@@ -27,6 +27,12 @@ public class mathTest extends AppCompatActivity {
     private double questions = 4.0;
     private String correctAnswer;
 
+    /*
+    1. we get the questions and answers
+    2. then we populate the view
+    once they answer then we repeat steps 1 & 2
+    nothing really special here
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -38,6 +38,9 @@ public class shortTermMemoryTestStart extends AppCompatActivity {
 
         populateWords();
 
+        /*
+        Uses CountDownTimer, which uses background thread
+         */
         new CountDownTimer(10000, 1000) {
 
             public void onTick(long millisUntilFinished) {
@@ -50,6 +53,9 @@ public class shortTermMemoryTestStart extends AppCompatActivity {
         }.start();
     }
 
+    /*
+    randomly picks three words and populates textView
+     */
     private void populateWords() {
         String[] words = getResources().getStringArray(R.array.Wordlist);
         String [] memory =  new String[3];
@@ -70,6 +76,10 @@ public class shortTermMemoryTestStart extends AppCompatActivity {
         t3.setText(memory[2]);
     }
 
+    /*
+    instead of starting reflex test immediately we start a prereflex to get them ready
+    also uses timers
+     */
     public void startTest() {
         this.setContentView(R.layout.pre_reflex);
         new CountDownTimer(5000, 1000) {
